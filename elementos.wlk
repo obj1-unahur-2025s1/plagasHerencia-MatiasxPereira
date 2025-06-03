@@ -13,8 +13,7 @@ class Huerta {
     var produccion
     method esBueno() = produccion > nivelMinimoProduccion.valor()
     method atacarCon(unaPlaga) {
-        if (unaPlaga.transmiteEnfermedades()) produccion = 0.max(produccion - unaPlaga.daño() * 0.1 - 10) 
-        else produccion = 0.max(produccion - unaPlaga.daño() * 0.1)
+        produccion = 0.max(produccion - (unaPlaga.daño() * 0.1 + if(unaPlaga.transmiteEnfermedades()) 10 else 0)) 
     }
 }
 

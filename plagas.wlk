@@ -4,8 +4,8 @@ class Plaga {
     method transmiteEnfermedades() = poblacion >= 10 && self.condicionAdicional()
     method condicionAdicional() = true
     method daño() = poblacion
-    method efectoAlAtacar() = poblacion * 1.1
-    method atacar(unElemento) {self.efectoAlAtacar() unElemento.atacarCon(self)}
+    method efectoAlAtacar() {poblacion += poblacion * 1.1}
+    method atacar(unElemento) {unElemento.atacarCon(self) self.efectoAlAtacar()}
 }
 
 
@@ -13,7 +13,7 @@ class Cucarachas inherits Plaga {
     var pesoPromedioBicho
     override method daño() = super() / 2
     override method condicionAdicional() = pesoPromedioBicho >= 10
-    override method efectoAlAtacar() = super() && pesoPromedioBicho + 2dog
+    override method efectoAlAtacar() {super() pesoPromedioBicho += 2}
 }
 
 
@@ -22,7 +22,7 @@ class Pulgas inherits Plaga {
 }
 
 class Garrapatas inherits Pulgas {
-    override method efectoAlAtacar() = super() + poblacion * 0.1
+    override method efectoAlAtacar() {poblacion += poblacion * 1.2}
 }
 
 class Mosquitos inherits Plaga { 
