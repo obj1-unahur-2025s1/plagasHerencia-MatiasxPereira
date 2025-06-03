@@ -2,7 +2,7 @@ import plagas.*
 
 class Hogar {
     var mugre
-    var confort
+    const confort
     method esBueno() = confort >= mugre / 2
     method atacarCon(unaPlaga) {
         mugre += unaPlaga.daño()
